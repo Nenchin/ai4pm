@@ -69,15 +69,16 @@ ann_model_pred = ann_model.predict(X)
 
 avg_pred = np.c_[lin_reg_model_pred, 
                  xgb_model_pred, ann_model_pred].mean(axis=1)
+avg_pred_100 = avg_pred[:101]
 
 progress_bar = st.sidebar.progress(0)
 status_text = st.sidebar.empty()
 last_rows = pd.DataFrame([0.0], index=[0])
 chart = col2.line_chart(last_rows)
 
-for i,j in enumerate(list(avg_pred)):
+for i,j in enumerate(list(avg_pred_100)):
     new_rows = pd.DataFrame([j], index=[i])
-    i = round((i/len(X))*100)
+    i = round((i/len(avg_pred_100))*100)
     status_text.text("%i%% Complete" % i )
     chart.add_rows(new_rows)
     progress_bar.progress(i)
