@@ -49,8 +49,8 @@ class OutlierHandler(BaseEstimator, TransformerMixin):
         
 col1.image("ptdf_logo.png", width=100)
 
-col1.title("""
-            Artificial Intelligence for Pipeline Leakage Prediction (AI4PLP)
+col1.write("""
+           ### Artificial Intelligence for Pipeline Leakage Prediction (AI4PLP)
             """)
 
 #st.markdown("<h2 style='text-align: center; color: black; \
@@ -71,6 +71,14 @@ ann_model_pred = ann_model.predict(X)
 avg_pred = np.c_[lin_reg_model_pred, 
                  xgb_model_pred, ann_model_pred].mean(axis=1)
 avg_pred_100 = avg_pred[:101]
+
+col2.write("""
+               ---
+               ---
+               ---
+               ---
+               ---
+               """)
 
 progress_bar = st.sidebar.progress(0)
 status_text = st.sidebar.empty()
@@ -96,6 +104,8 @@ data = {"l_r": lin_reg_model_pred.tolist(),
 
 pred_df = pd.DataFrame(data)
 
-col1.header("Predictions from L_R, XGB, and ANN")
+col1.write("""
+           ##### Predictions from L_R, XGB, and ANN
+           """)
 col1.write(pred_df)
 col1.write("---")
