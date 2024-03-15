@@ -16,7 +16,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPRegressor
 
 
-st.set_page_config(layout="wide")
+st.set_page_config(page_title="AI4PLP", page_icon="ptdf_logo.png",
+                   layout="wide")
 
 col1, col2 = st.columns(2)
 
@@ -49,7 +50,7 @@ class OutlierHandler(BaseEstimator, TransformerMixin):
 col1.image("ptdf_logo.png", width=100)
 
 col1.title("""
-            Artificial Intelligence for Pipeline Leakage Prediction (AI4PM)
+            Artificial Intelligence for Pipeline Leakage Prediction (AI4PLP)
             """)
 
 #st.markdown("<h2 style='text-align: center; color: black; \
