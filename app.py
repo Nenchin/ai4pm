@@ -5,7 +5,7 @@ import joblib
 import time
 import warnings
 import matplotlib.pyplot as plt
-import tensorflow as tf
+import tensorflow
 
 from sklearn.preprocessing import FunctionTransformer, StandardScaler
 from sklearn.impute import SimpleImputer
@@ -17,7 +17,7 @@ from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.compose import ColumnTransformer, make_column_selector
 from tensorflow.keras.models import load_model
 
-TF_ENABLE_ONEDNN_OPTS=0
+#TF_ENABLE_ONEDNN_OPTS=0
 
 # Initial page config
 st.set_page_config(page_title="RESPECTS", page_icon="ptdf_logo.png",
@@ -82,7 +82,7 @@ log_transformer = FunctionTransformer(logger)
 data_preprocessor = joblib.load("data_preprocessing.pkl")
 
 
-model = load_model("AI4PM_ANN_Model.h5", compile=False)
+model = load_model("AI4PM_ANN_Model.hdf5")
 
 original_title = '<h1 style="font-family:Arial; text-align: center; color:Green; \
                     font-size: 50px;"> \
